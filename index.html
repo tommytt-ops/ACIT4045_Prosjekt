@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html Lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1.0">
+        <title>Go HTMX </title>
+    </head>
+    <body>
+        <h1>testy</h1>
+        <ul>
+            {{range .Todos}}
+            <li>{{.Message}}</li>
+            {{end}}
+        </ul>
+    </body>
+</html>
