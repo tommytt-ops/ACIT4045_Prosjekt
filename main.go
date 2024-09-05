@@ -34,14 +34,13 @@ func main() {
 		templ.Execute(w, data)
 	})
 
-	addTodohandler := func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/add-todo", func(w http.ResponseWriter, r *http.Request) {
 		message := r.PostFormValue("message")
-		templ := template.Must(template.ParseFiles("frontend/form.html"))
 		todo := Todo{Id: len(data["Todos"]) + 1, Message: message}
 		data["Todos"] = append(data["Todos"], todo)
+		templ := template.Must(template.ParseFiles("frontend/form.html"))
 		templ.ExecuteTemplate(w, "todo-list-element", todo)
-	}
+	})
 
-	http.HandleFunc("/add-todo", addTodohandler)
 	log.Fatal(http.ListenAndServe(":8000", nil))
 }
