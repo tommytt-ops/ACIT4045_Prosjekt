@@ -12,23 +12,9 @@
     </head>
     <nav>
         <ul>
-            <li><a href="/" hx-get="/" hx-target="main">Home</a></li>
-            <li><a href="/about" hx-get="/about" hx-target="main">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/form">Form</Form></a></li>
         </ul>
-    </nav>
-    
-    <body>
-        <h1>testy</h1>
-        <ul id="todo-list">
-            {{range.Todos}} {{block "todo-list-element" .}}
-            <li>{{.Message}}</li>
-            {{end}} {{end}}
-        </ul>
-
-        <form hx-swap="beforeend" hx-target="#todo-list" hx-post="/add-todo">
-            <label for="message">Message: </label>
-            <input type="text" id="message" name="message" />
-            <button type="submit">submit</button>
-        </form>
-    </body>
+    </nav> 
 </html>
