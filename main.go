@@ -26,13 +26,13 @@ func main() {
 		templ.Execute(w, nil)
 	})
 
-	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/AI1", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/about.html"))
 		fmt.Println(w, r)
 		templ.Execute(w, nil)
 	})
 
-	http.HandleFunc("/form", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/AI2", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/form.html"))
 		fmt.Println(w, r)
 		templ.Execute(w, data)
