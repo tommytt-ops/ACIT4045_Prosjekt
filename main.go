@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -21,16 +22,19 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/index.html"))
+		fmt.Println(w, r)
 		templ.Execute(w, nil)
 	})
 
 	http.HandleFunc("/about", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/about.html"))
+		fmt.Println(w, r)
 		templ.Execute(w, nil)
 	})
 
 	http.HandleFunc("/form", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/form.html"))
+		fmt.Println(w, r)
 		templ.Execute(w, data)
 	})
 
