@@ -14,12 +14,6 @@ type Todo struct {
 
 func main() {
 
-	data := map[string][]Todo{
-		"Todos": {
-			Todo{Id: 1, Message: "Milk"},
-		},
-	}
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		templ := template.Must(template.ParseFiles("frontend/index.html"))
 		fmt.Println(w, r)
@@ -27,23 +21,15 @@ func main() {
 	})
 
 	http.HandleFunc("/AI1", func(w http.ResponseWriter, r *http.Request) {
-		templ := template.Must(template.ParseFiles("frontend/about.html"))
+		templ := template.Must(template.ParseFiles("frontend/AI1.html"))
 		fmt.Println(w, r)
 		templ.Execute(w, nil)
 	})
 
 	http.HandleFunc("/AI2", func(w http.ResponseWriter, r *http.Request) {
-		templ := template.Must(template.ParseFiles("frontend/form.html"))
+		templ := template.Must(template.ParseFiles("frontend/AI2.html"))
 		fmt.Println(w, r)
-		templ.Execute(w, data)
-	})
-
-	http.HandleFunc("/add-todo", func(w http.ResponseWriter, r *http.Request) {
-		message := r.PostFormValue("message")
-		todo := Todo{Id: len(data["Todos"]) + 1, Message: message}
-		data["Todos"] = append(data["Todos"], todo)
-		templ := template.Must(template.ParseFiles("frontend/form.html"))
-		templ.ExecuteTemplate(w, "todo-list-element", todo)
+		templ.Execute(w, nil)
 	})
 
 	log.Fatal(http.ListenAndServe(":8000", nil))
